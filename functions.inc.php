@@ -38,7 +38,7 @@ function accountcodepreserve_hookGet_config($engine) {
           foreach ($patterns as $pattern) {
             $fpattern = core_routing_formatpattern($pattern);
             $extension = $fpattern['dial_pattern'];
-            $ext->splice($context, $extension, 0, new ext_execif('$[ "${CALLEE_ACCOUNCODE}" != "" ] ','Set','CDR(accountcode)=${CALLEE_ACCOUNCODE}'));
+            $ext->splice($context, $extension, 2, new ext_execif('$[ "${CALLEE_ACCOUNCODE}" != "" ] ','Set','CDR(accountcode)=${CALLEE_ACCOUNCODE}'));
           }
         }
       } else {
