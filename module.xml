@@ -1,5 +1,6 @@
 <module>
 	<rawname>accountcodepreserve</rawname>
+	<repo>contributed</repo>
 	<name>Preserve Accountcode</name>
 	<version>2.8.0.0</version>
 	<publisher>Astrogen LLC (Philippe Lindheimer)</publisher>
@@ -16,6 +17,9 @@
 		*2.5.0.1* change splice to report2 from report to allow follow-me to work properly
 		*2.5.0* Initial Release
 	</changelog>
+	<supported>
+		<version>2.10</version>
+	</supported>
 	<location>release/2.5/accountcodepreserve-2.5.0.tgz</location>
 	<md5sum>241a31778c20d685c2dff317505b2269</md5sum>
 </module>
