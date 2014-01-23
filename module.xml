@@ -1,5 +1,6 @@
 <module>
 	<rawname>accountcodepreserve</rawname>
+	<repo>extended</repo>
 	<name>Preserve Accountcode</name>
 	<version>2.11.0.0</version>
 	<publisher>Schmooze Com, Inc</publisher>
@@ -10,10 +11,14 @@
 	</description>
 	<changelog>
 		*2.11.0.0* update for 2.11
+		*2.8.0.1* Add to extended repo
 		*2.8.0.0* add support for 2.8+ route schema
 		*2.5.0.1* change splice to report2 from report to allow follow-me to work properly
 		*2.5.0* Initial Release
 	</changelog>
-	<location>release/2.11/accountcodepreserve-2.11.0.tgz</location>
+	<supported>
+		<version>2.10</version>
+	</supported>
+	<location>release/2.5/accountcodepreserve-2.5.0.tgz</location>
 	<md5sum>241a31778c20d685c2dff317505b2269</md5sum>
 </module>
