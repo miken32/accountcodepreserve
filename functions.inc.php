@@ -72,16 +72,26 @@ function accountcodepreserve_hookGet_config($engine) {
        */
       $account_codes = array();
       $devices = core_devices_list('all','full',true);
-      foreach ($devices as $device) {
-        if ($device['user'] != 'none' && $device['tech'] != 'custom') {
-          $dev_props = core_devices_get($device['user']);
-          if (isset($dev_props['accountcode']) && $dev_props['accountcode'] != '') {
-            $account_codes[$device['user']] = $dev_props['accountcode'];
-          }
-        }
-      }
+			if(!empty($devices) && is_array($devices)) {
+				foreach ($devices as $device) {
+        	if ($device['user'] != 'none' && $device['tech'] != 'custom') {
+          	$dev_props = core_devices_get($device['user']);
+          	if (isset($dev_props['accountcode']) && $dev_props['accountcode'] != '') {
+            	$account_codes[$device['user']] = $dev_props['accountcode'];
+          	}
+        	}
+				}
+			}
       foreach ($account_codes as $user => $accountcode) {
-		  $astman->database_put("AMPUSER",$user."/accountcode",$accountcode);
+		  	$astman->database_put("AMPUSER",$user."/accountcode",$accountcode);
+				/*
+				// database_put is expensive so read it first and only write if it's been changed
+				//
+				$old_code = trim($astman->database_get("AMPUSER",$user."/accountcode"));
+				if ($old_code != trim($accountcode)) {
+		  		$astman->database_put("AMPUSER",$user."/accountcode",$accountcode);
+				}
+				 */
       }
       unset($account_codes);
       unset($devices);
