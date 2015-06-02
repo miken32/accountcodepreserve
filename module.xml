@@ -5,6 +5,7 @@
 	<version>13.0.1alpha1</version>
 	<publisher>Schmooze Com, Inc</publisher>
 	<license>GPLv2</license>
+	<licenselink>www.gnu.org/licenses/gpl-2.0.txt</licenselink>
 	<type>setup</type>
 	<category>Admin</category>
 	<description>This module preservers the first callee's account code, that has an accountcode, that it encounters. This preserved accoutcode will be used to set the CDR(accountcode) for any outbound calls that result from any type of redirected call (CF, VmX, Follow-Me, etc.). The account code for each user is pulled out of their associated device settings, which means this is only supported in extension mode and would have to be updated for deviceanduser mode, requiring a new accountcode field to be defined for the user on the extension/user screen.
