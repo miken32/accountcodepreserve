@@ -2,8 +2,8 @@
 	<rawname>accountcodepreserve</rawname>
 	<repo>extended</repo>
 	<name>Preserve Accountcode</name>
-	<version>13.0.1alpha1</version>
-	<publisher>Schmooze Com, Inc</publisher>
+	<version>13.0.2</version>
+	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv2</license>
 	<licenselink>www.gnu.org/licenses/gpl-2.0.txt</licenselink>
 	<type>setup</type>
