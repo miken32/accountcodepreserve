@@ -53,7 +53,7 @@ function accountcodepreserve_hookGet_config($engine) {
             //strip the pipe out as that's what we use for the dialplan extension
             $extension = str_replace('|','',$rt);
             // If there are any wildcards in there, add a _ to the start
-            if (preg_match("/\.|z|x|\[|\]/i", $extension)) { 
+            if (preg_match("/\.|z|x|\[|\]/i", $extension)) {
               $extension = "_".$extension;
             }
             $ext->splice($context, $extension, 0, new ext_execif('$[ "${CALLEE_ACCOUNCODE}" != "" ] ','Set','CDR(accountcode)=${CALLEE_ACCOUNCODE}'));
@@ -71,7 +71,7 @@ function accountcodepreserve_hookGet_config($engine) {
                the language module code that handles the user gui hook for the language in extensions/users.
        */
       $account_codes = array();
-      $devices = core_devices_list('all','full',true);
+			$devices = FreePBX::Core()->getAllDevicesByType();
 			if(!empty($devices) && is_array($devices)) {
 				foreach ($devices as $device) {
         	if ($device['user'] != 'none' && $device['tech'] != 'custom') {
@@ -98,4 +98,3 @@ function accountcodepreserve_hookGet_config($engine) {
 		break;
 	}
 }
-?>
