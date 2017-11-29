@@ -27,37 +27,14 @@ function accountcodepreserve_hookGet_config($engine) {
 
 	/* check and set the account code in every route (so we don't have to do it in every trunk in case there are fail-over trunks
 	*/
-		if (function_exists('core_routing_getroutepatternsbyid')) {
-
-			// 2.8+ schema version
-			//
-			$routes = core_routing_list();
-			foreach ($routes as $route) {
-				$patterns = core_routing_getroutepatternsbyid($route['route_id']);
-				$context = 'outrt-'.$route['route_id'];
-				foreach ($patterns as $pattern) {
-					$fpattern = core_routing_formatpattern($pattern);
-					$extension = $fpattern['dial_pattern'];
-					$ext->splice($context, $extension, 2, new ext_execif('$[ "${CALLEE_ACCOUNCODE}" != "" ] ','Set','CDR(accountcode)=${CALLEE_ACCOUNCODE}'));
-				}
-			}
-		} else {
-
-			// 2.7- schema version
-			//
-			$route_list = core_routing_getroutenames();
-			foreach($route_list as $route) {
-				$context = 'outrt-'.$route[0];
-				$patterns = core_routing_getroutepatterns($route[0]);
-				foreach($patterns as $rt) {
-					//strip the pipe out as that's what we use for the dialplan extension
-					$extension = str_replace('|','',$rt);
-					// If there are any wildcards in there, add a _ to the start
-					if (preg_match("/\.|z|x|\[|\]/i", $extension)) {
-						$extension = "_".$extension;
-					}
-					$ext->splice($context, $extension, 0, new ext_execif('$[ "${CALLEE_ACCOUNCODE}" != "" ] ','Set','CDR(accountcode)=${CALLEE_ACCOUNCODE}'));
-				}
+		$routes = core_routing_list();
+		foreach ($routes as $route) {
+			$patterns = core_routing_getroutepatternsbyid($route['route_id']);
+			$context = 'outrt-'.$route['route_id'];
+			foreach ($patterns as $pattern) {
+				$fpattern = core_routing_formatpattern($pattern);
+				$extension = $fpattern['dial_pattern'];
+				$ext->splice($context, $extension, 2, new ext_execif('$[ "${CALLEE_ACCOUNCODE}" != "" ] ','Set','CDR(accountcode)=${CALLEE_ACCOUNCODE}'));
 			}
 		}
 
