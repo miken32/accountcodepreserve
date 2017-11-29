@@ -61,8 +61,8 @@ function accountcodepreserve_hookGet_config($engine) {
 			}
 		}
 
-	/* Now lookup each device that has an account code set and create the AMPUSER/user/accountcode key for that user based on the
-	   first device that we see associated with them. If multiple devices point to the same user, the code used will only be one of them.
+	/* Now lookup each device and create or delete the AMPUSER/user/accountcode key for that user based on the last device
+	   that we see associated with them. If multiple devices point to the same user, the code used will only be one of them.
 
 	   TODO: note this is fine for extension mode assuming there is always a 1-to-1 mapping of device/user. For deviceanduser mode
 	   it would be necessary to have accountcodes stored with the user and not with the device. And then macro-user-callerid
@@ -76,14 +76,20 @@ function accountcodepreserve_hookGet_config($engine) {
 			foreach ($devices as $device) {
 				if ($device['user'] != 'none' && $device['tech'] != 'custom') {
 					$dev_props = core_devices_get($device['user']);
-					if (isset($dev_props['accountcode']) && $dev_props['accountcode'] != '') {
+					if (isset($dev_props['accountcode'])) {
 						$account_codes[$device['user']] = $dev_props['accountcode'];
+					} else {
+						$account_codes[$device['user']] = '';
 					}
 				}
 			}
 		}
 		foreach ($account_codes as $user => $accountcode) {
-			$astman->database_put("AMPUSER",$user."/accountcode",$accountcode);
+			if ($accountcode === '' || !is_numeric($accountcode)) {
+				$astman->database_del("AMPUSER", $user."/accountcode");
+			} else {
+				$astman->database_put("AMPUSER",$user."/accountcode",$accountcode);
+			}
 		}
 		unset($account_codes);
 		unset($devices);
