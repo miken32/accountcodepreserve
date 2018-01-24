@@ -62,7 +62,7 @@ function accountcodepreserve_hookGet_config($engine) {
 			}
 		}
 		foreach ($account_codes as $user => $accountcode) {
-			if ($accountcode === '' || !is_numeric($accountcode)) {
+			if ($accountcode === '') {
 				$astman->database_del("AMPUSER", $user."/accountcode");
 			} else {
 				$astman->database_put("AMPUSER",$user."/accountcode",$accountcode);
