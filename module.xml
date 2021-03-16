@@ -2,7 +2,7 @@
 	<rawname>accountcodepreserve</rawname>
 	<repo>extended</repo>
 	<name>Preserve Accountcode</name>
-	<version>13.0.2.2</version>
+	<version>16.0.0.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv2</license>
 	<licenselink>www.gnu.org/licenses/gpl-2.0.txt</licenselink>
@@ -11,17 +11,10 @@
 	<description>This module preservers the first callee's account code, that has an accountcode, that it encounters. This preserved accoutcode will be used to set the CDR(accountcode) for any outbound calls that result from any type of redirected call (CF, VmX, Follow-Me, etc.). The account code for each user is pulled out of their associated device settings, which means this is only supported in extension mode and would have to be updated for deviceanduser mode, requiring a new accountcode field to be defined for the user on the extension/user screen.
 	</description>
 	<changelog>
-		*13.0.2.2* FREEPBX-16708
-		*13.0.2.1* Delete the account code from astdb when it's deleted from the GUI. Also did some other housekeeping tasks in separate commits.
-		*13.0.1alpha1* Fixes
-		*2.11.0.0* update for 2.11
-		*2.8.0.1* Add to extended repo
-		*2.8.0.0* add support for 2.8+ route schema
-		*2.5.0.1* change splice to report2 from report to allow follow-me to work properly
-		*2.5.0* Initial Release
+		*16.0.0.1* Initial Release
 	</changelog>
 	<supported>
-		<version>13.0</version>
+		<version>16.0</version>
 	</supported>
 	<location>release/2.5/accountcodepreserve-2.5.0.tgz</location>
 	<md5sum>241a31778c20d685c2dff317505b2269</md5sum>
