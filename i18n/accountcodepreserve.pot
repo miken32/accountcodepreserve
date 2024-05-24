@@ -3,13 +3,13 @@
 # For licensing information, please see the file named LICENSE located in the module directory
 #
 # FreePBX language template for accountcodepreserve
-# Copyright (C) 2008-2021 Sangoma Technologies, Inc.
+# Copyright (C) 2008-2024 Sangoma Technologies, Inc.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 11:15+0000\n"
+"POT-Creation-Date: 2024-05-24 04:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,3 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: accountcodepreserve.i18n.php:6
-msgid "Admin"
-msgstr ""
-
-#: accountcodepreserve.i18n.php:4
-msgid "Preserve Accountcode"
-msgstr ""
-
-#: accountcodepreserve.i18n.php:8
-msgid ""
-"This module preservers the first callee's account code, that has an "
-"accountcode, that it encounters. This preserved accoutcode will be used to "
-"set the CDR(accountcode) for any outbound calls that result from any type of "
-"redirected call (CF, VmX, Follow-Me, etc.). The account code for each user "
-"is pulled out of their associated device settings, which means this is only "
-"supported in extension mode and would have to be updated for deviceanduser "
-"mode, requiring a new accountcode field to be defined for the user on the "
-"extension/user screen."
-msgstr ""
